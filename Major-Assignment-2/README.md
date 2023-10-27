@@ -1,11 +1,4 @@
 # Major Assignment 2 (Chapter 8)
-## Objectives:
-- Familiarize yourself with different projection methods.
-- Understand color coding with different scales.
-- Work with Topojson and Geojson files.
-- Process and filter data.
-- Create a static webpage using GitHub's server.
-
 ## Assignment (100 Points):
 
 1. **Download Repository:** Download or clone the repository.
