@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Major Assignment 4</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="lib/d3.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            height: 100vh;
+            background-color: #eaeaea;
+            color: #444;
+        }
+
+        #timestamp {
+            position: absolute;
+            font-family: 'Verdana', sans-serif;
+            font-size: 12pt;
+            color: #666;
+        }
+
+        .legend-text {
+            font-family: 'Verdana', sans-serif;
+            font-size: 10pt;
+            color: #555;
+        }
+
+        #slider-range {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #brush-slider {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #canvas {
+            width: 70vw;
+            max-width: 500px;
+            height: 70vh;
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Visualization of CT scan images using Contour Map</h1>
+        </div>
+        
+        <div class="content">
+            <div class="slider-container">
+                <input type="text" id="range" readonly>
+                <div id="slider-range"></div>
+                <span id="min-value"></span>
+                <span id="max-value"></span>
+            </div>
+            <div class="brush-slider-container">
+                <label for="brush-range"><h3>BrushX Slider</h3></label>
+                <div id="brush-slider"></div>
+            </div>
+            <div class="canvas-container">
+                <div id="canvas">
+                    <svg viewBox="0 0 530 530"></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const Data_CT = 'data/Data_CT.csv';
+        let svg = d3.select("svg");
+        //let thresholdValue=50;
+        const path = d3.geoPath();
+
+        function contourMap(file) {
+            d3.csv(file).then(function (data) {
+                const m = 512, n = 512;
+                const values = data.map(d => +d[0]);
+
+                const min = d3.min(values);
+                const max = d3.max(values);
+                const mid = (max + max)/2;
+
+            /////////////// COLORSCALE
+            const colorScale = d3.scaleDiverging()
+                .domain([min, mid, max])
+                .interpolator(d3.interpolateRdBu);
+
+                function updateContours(minVal, maxVal) {
+                    svg.selectAll(".contours").remove();
+
+                    const updatedContours = d3.contours()
+                        .size([m, n])
+                        .thresholds(d3.range(minVal, maxVal, 60))
+                        (values);
+
+                    svg.append("g").attr("class", "contours")
+                        .selectAll("path")
+                        .data(updatedContours)
+                        .enter()
+                        .append("path")
+                        .attr("d", path)
+                        .attr("stroke", "#333")
+                        .attr("stroke-width", ".1px")
+                        .attr("stroke-linejoin", "round")
+                        .attr("fill", d => colorScale(d.value));
+                }
+
+                const contours = d3.contours()
+                    .size([m, n])
+                    .thresholds(d3.range(min, max, 50))
+                    (values);
+
+                svg.append("g").attr("class", "contours")
+                    .selectAll("path")
+                    .data(contours)
+                    .enter()
+                    .append("path")
+                    .attr("d", path)
+                    .attr("stroke", "#333")
+                    .attr("stroke-width", ".1px")
+                    .attr("stroke-linejoin", "round")
+                    .attr("fill", d => colorScale(d.value));
+
+                ////////////////// JQUERY SLIDER
+                $("#slider-range").slider({
+                    range: true,
+                    min: min,
+                    max: max,
+                    values: [min, max],
+                    slide: function (event, ui) {
+                        $("#range").val(ui.values[0] + " - " + ui.values[1]);
+                        updateContours(ui.values[0], ui.values[1]);
+                    }
+                });
+
+                // BrushX SLIDER
+                const svgElement = document.querySelector("svg");
+                const width = svgElement.getBoundingClientRect().width;
+
+                const brushSlider = d3.brushX()
+                    .extent([[0, 0], [width, 20]])
+                    .on("brush", brushed);
+
+                d3.select("#brush-slider").call(brushSlider)
+                    .selectAll("rect")
+                    .attr("height", 20);
+
+                function brushed(event) {
+                    const selection = event.selection;
+                    if (selection) {
+                        const [x0, x1] = selection.map(d3.scaleLinear().domain([0, width]).invert);
+                        console.log("Brushed Range:", [x0, x1]);
+                    }
+                }
+            });
+        }
+        contourMap(Data_CT);
+    </script>
+</body>
+</html>
