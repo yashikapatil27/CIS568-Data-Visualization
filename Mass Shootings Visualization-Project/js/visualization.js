@@ -8,10 +8,10 @@ const pathGenerator = d3.geoPath().projection(d3.geoAlbersUsa());
 const labelContainer = svg.append("g").attr("class", "label-container");
 
 // Constant variable to store the file path for a TopoJSON file representing counties
-const topoJsonPath = "data/counties.json";
+const topoJsonPath = "./data/counties.json";
 
 // Constant variable to store the file path for a CSV file containing data on mass shootings from 2014 to 2022
-const csvPath = "data/filtered_mass_shootings.csv";
+const csvPath = "./data/filtered_mass_shootings.csv";
 
 // State Abbreviations data - used for better mapping of states
 const stateAbbreviations = {
