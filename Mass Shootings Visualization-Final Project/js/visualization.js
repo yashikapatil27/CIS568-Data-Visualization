@@ -2,8 +2,8 @@ const svg = d3.select("#map");
 const pathGenerator = d3.geoPath().projection(d3.geoAlbersUsa());
 const labelContainer = svg.append("g").attr("class", "label-container");
 
-const topoJsonPath = "/data/counties.json";
-const csvPath = "/data/filtered_mass_shootings.csv";
+const topoJsonPath = "../data/counties.json";
+const csvPath = "../data/filtered_mass_shootings.csv";
 
 // State Abbreviations data - used for better mapping of states
 const stateAbbreviations = {
@@ -139,9 +139,6 @@ Promise.all([d3.json(topoJsonPath), d3.csv(csvPath)])
 
     // Add Bootstrap tooltip attributes to state paths
     svg.selectAll("path")
-      // Displays Counties with county name tooltips
-      .data(topojson.feature(topoJsonData, topoJsonData.objects.counties).features)
-
       // Displays States with State name tooltips
       .data(topojson.feature(topoJsonData, topoJsonData.objects.states).features)
       .enter().append("path")
