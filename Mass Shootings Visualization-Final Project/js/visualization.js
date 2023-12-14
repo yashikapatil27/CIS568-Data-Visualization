@@ -105,37 +105,9 @@ Promise.all([d3.json(topoJsonPath), d3.csv(csvPath)])
       csvStateData[state].injured_state += victimsInjured_state;
     });
 
-    /**
-     * Displays County wise, count of killed & injured
-     * Eg: 
-     *     csvCountyData = 
-     *      {
-                "New Orleans": {
-                    "killed": 55,
-                    "injured": 308
-                },
-                "Los Angeles": {
-                    "killed": 33,
-                    "injured": 202
-                },...
-            }
-     */
-    // console.log(csvCountyData);
-
     // ======= RENDERING THE TopoJSON MAP ==========
     // Append a new group element to the 'svg' container with the class 'state-labels'
     const stateLabels = svg.append("g").attr("class", "state-labels");
-
-    // Add state abbreviations as text labels
-    // stateLabels.selectAll("text")
-    //   .data(topojson.feature(topoJsonData, topoJsonData.objects.states).features)
-    //   .enter().append("text")
-    //   .attr("x", d => pathGenerator.centroid(d)[0])
-    //   .attr("y", d => pathGenerator.centroid(d)[1])
-    //   .attr("text-anchor", "middle")
-    //   .attr("alignment-baseline", "middle")
-    //   .text(d => stateAbbreviations[d.properties.name]) // Use state abbreviations
-    //   .attr("class", "state-label");
 
     // Add Bootstrap tooltip attributes to state paths
     svg.selectAll("path")
@@ -164,16 +136,6 @@ Promise.all([d3.json(topoJsonPath), d3.csv(csvPath)])
 
       geoFeature.properties.victimsKilled = data ? data.killed : 0;
       geoFeature.properties.victimsInjured = data ? data.injured : 0;
-
-      // console.log("Victims Killed: " + geoFeature.properties.victimsKilled);
-      // console.log("Victims Injured: " + geoFeature.properties.victimsInjured);
-      /*
-          Victims Killed: 2
-          Victims Injured: 12
-          Victims Killed: 5
-          Victims Injured: 8
-          ...
-      */
 
     });
 
@@ -210,9 +172,6 @@ const yearSlider = document.getElementById("year-slider");
 const yearValue = document.getElementById("year-value");
 const allLabel = document.querySelector(".all-label");
 const yearLabels = document.querySelectorAll(".year-labels span");
-
-// Constant variable to store the file path for a new CSV file containing data for the bar graph
-// const barGraphCsvPath = "/data/state_years_totals.csv"; // Replace with your actual file path
 
 
 // Function to set the initial colors
