@@ -1,6 +1,10 @@
 # Major Assignment 2: Geospatial Visualizations Using Choropleth Maps
 
 ## Overview
+
+- **GIF Output**:  
+  ![Geospatial Visualization Output](MA2-gif.gif)
+  
 In this assignment, three **choropleth maps** were created to visualize population data and its changes over time across counties. The visualizations were implemented using **D3.js** and **TopoJSON** data for Massachusetts counties.
 
 The three choropleth maps are as follows:
@@ -12,10 +16,6 @@ Key features implemented:
 - **Mouse Interaction**: On mouse hover, each county is highlighted, and data for each county is shown in a tooltip.
 - **Color Coding**: Counties were color-coded based on population data and, optionally, the Gini-index for 2017.
 - **Page Styling**: The visualizations were styled using basic HTML and CSS to create a clean, centered layout.
-
-## Findings & Results
-- **GIF Output**:  
-  ![Geospatial Visualization Output](MA2-gif.gif)
 
 - **Key Insights**:
   - **Population Distribution**: The map of population in 1980 gives a clear view of demographic distribution across counties.
