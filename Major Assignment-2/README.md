@@ -1,80 +1,24 @@
-# Major Assignment 2 (Chapter 8)
-## Assignment (100 Points):
+# Major Assignment 2: Geospatial Visualizations Using Choropleth Maps
 
-1. **Download Repository:** Download or clone the repository.
+## Overview
+In this assignment, three **choropleth maps** were created to visualize population data and its changes over time across counties. The visualizations were implemented using **D3.js** and **TopoJSON** data for Massachusetts counties.
 
-2. **Create Geospatial Visualizations (make 3 choropleth maps in vertical ordering):** Modify the data and create three new geospatial visualizations on one horizontally centered page:
-    - Top: Population in 1980 (10 points)
-    - Middle: Population change between 2010 and 2000 in each town (10/100 points)
-    - Bottom: Color the map by County(30/100 points)
-        - Add interaction (mouse enter/mouse leave) and highlight each county on hover (20/100 points).
+The three choropleth maps are as follows:
+1. **Map 1**: Population in 1980.
+2. **Map 2**: Population change between 2010 and 2000 for each town.
+3. **Map 3**: Color-coded map by county, with interaction features.
 
-3. **Add Tooltip DIV Element:** Add an HTML DIV element to show data for each county when the mouse enters the county on each map (20/100 points).
+Key features implemented:
+- **Mouse Interaction**: On mouse hover, each county is highlighted, and data for each county is shown in a tooltip.
+- **Color Coding**: Counties were color-coded based on population data and, optionally, the Gini-index for 2017.
+- **Page Styling**: The visualizations were styled using basic HTML and CSS to create a clean, centered layout.
 
-4. **Page Styling:** Add a title (H1) for the assignment at the top center of the page and your name below it (H3). Style the page and center the SVG using a div (10/100 points).
+## Findings & Results
+- **GIF Output**:  
+  ![Geospatial Visualization Output](MA2-gif.gif)
 
-5. **GitHub Webpage:** Create a GitHub webpage for the visualization (10/100 points).
-6. **Bonus Point** Color code the Counties by Gini-index 2017 (+20 points).
-
-Note: You only need the topojson file for this assignment.
-
-
-Extra info:
-[
-  {
-    "county": "Barnstable County",
-    "fips_code": 25001
-  },
-  {
-    "county": "Berkshire County",
-    "fips_code": 25003
-  },
-  {
-    "county": "Bristol County",
-    "fips_code": 25005
-  },
-  {
-    "county": "Dukes County",
-    "fips_code": 25007
-  },
-  {
-    "county": "Essex County",
-    "fips_code": 25009
-  },
-  {
-    "county": "Franklin County",
-    "fips_code": 25011
-  },
-  {
-    "county": "Hampden County",
-    "fips_code": 25013
-  },
-  {
-    "county": "Hampshire County",
-    "fips_code": 25015
-  },
-  {
-    "county": "Middlesex County",
-    "fips_code": 25017
-  },
-  {
-    "county": "Nantucket County",
-    "fips_code": 25019
-  },
-  {
-    "county": "Norfolk County",
-    "fips_code": 25021
-  },
-  {
-    "county": "Plymouth County",
-    "fips_code": 25023
-  },
-  {
-    "county": "Suffolk County",
-    "fips_code": 25025
-  },
-  {
-    "county": "Worcester County",
-    "fips_code": 25027
-  }
-]
+- **Key Insights**:
+  - **Population Distribution**: The map of population in 1980 gives a clear view of demographic distribution across counties.
+  - **Population Change**: The second map shows population change over the 2010–2000 period, to visualize areas of growth or decline.
+  - **County-Level Color Coding**: The third map colors counties based on the data, with optional coloring by **Gini-index** for the year 2017 for bonus points.
+  - **Interactivity**: Hover interactions allow for detailed exploration of county-specific data,.
