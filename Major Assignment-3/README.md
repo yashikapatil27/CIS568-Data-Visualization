@@ -1,6 +1,10 @@
 # Homework 3: Force Layout Visualization Using D3.js
 
 ## Overview
+
+- **GIF Output**:  
+![Force Layout Visualization Output](https://github.com/yashikapatil27/CIS568-Data-Visualization/blob/main/Major%20Assignment-3/MA3-gif.gif)
+
 In this assignment, a **force layout visualization** was created to represent an author network using **D3.js**. The goal was to display nodes (authors) and links (shared publications) with interactive features such as hover and click events. The size of each node was determined by the number of connections (degree), and nodes were colored based on their affiliation country, with special treatment for the top 10 countries.
 
 Key features implemented:
@@ -8,10 +12,6 @@ Key features implemented:
 - **Interactive hover** to highlight authors with the same affiliation and reduce the opacity of others.
 - **Click interaction** to display author information in a tooltip.
 - **Dynamic adjustment** of force parameters (charge, collision, and link strength) using UI controls.
-
-## Findings & Results
-- **GIF Output**:  
-![Force Layout Visualization Output](https://github.com/yashikapatil27/CIS568-Data-Visualization/blob/main/Major%20Assignment-3/MA3-gif.gif)
 
 - **Key Insights**:
   - **Nodes and Affiliation**: Nodes were successfully colored according to their affiliation country, with top 10 countries highlighted in distinct colors.
