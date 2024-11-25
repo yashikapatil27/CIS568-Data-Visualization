@@ -11,7 +11,7 @@ Key features implemented:
 
 ## Findings & Results
 - **GIF Output**:  
-![Force Layout Visualization Output](/MA3-gif.gif)
+![Force Layout Visualization Output]([/MA3-gif.gif](https://github.com/yashikapatil27/CIS568-Data-Visualization/blob/main/Major%20Assignment-3/MA3-gif.gif))
 
 - **Key Insights**:
   - **Nodes and Affiliation**: Nodes were successfully colored according to their affiliation country, with top 10 countries highlighted in distinct colors.
