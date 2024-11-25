@@ -1,56 +1,20 @@
-# Major Assignment 3: Force Layout Visualization Using D3.js
+# Homework 3: Force Layout Visualization Using D3.js
 
-## Requirements
+## Overview
+In this assignment, a **force layout visualization** was created to represent an author network using **D3.js**. The goal was to display nodes (authors) and links (shared publications) with interactive features such as hover and click events. The size of each node was determined by the number of connections (degree), and nodes were colored based on their affiliation country, with special treatment for the top 10 countries.
 
-### 1. Data Preparation
-- **JSON File**: Prepare a json file for network visualization such that,
-  - Nodes should represent **Authors**.  
-  - Links should represent **shared publications**.  
+Key features implemented:
+- **Force simulation** with nodes sized based on degree.
+- **Interactive hover** to highlight authors with the same affiliation and reduce the opacity of others.
+- **Click interaction** to display author information in a tooltip.
+- **Dynamic adjustment** of force parameters (charge, collision, and link strength) using UI controls.
 
-### 2. Hue Channel
-- Color the nodes based on **affiliation country**:
-  - Use distinct colors for the **top 10 countries**.  
-  - Assign the color `#A9A9A9` (gray) to all other countries.  
+## Findings & Results
+- **GIF Output**:  
+  ![Force Layout Visualization Output](MA-3.gif)
 
-### 3. User Interface (UI)
-- **Hover Interaction**:
-  - On **mouse over**:  
-    - Highlight only the authors with the same affiliation.  
-    - Reduce the opacity of other nodes to `0.2`.  
-  - On **mouse leave**:  
-    - Restore the original visualization.  
-- **Click Interaction**:
-  - On **click**:  
-    - Display the data for the selected author using a tooltip (e.g., author affiliation information in a tooltip `div`).
-
-### 4. Force Layout Visualization
-- **Force Simulation**:
-  - Use **D3.js force simulation** to create a force layout visualization.  
-  - Determine the size of each node based on its degree (number of connections):
-    - Use a suitable **min-max scale** for the domain.
-    - Apply `d3.scaleSqrt()` with a range of `[3, 12]` for node radius.  
-- **Force Parameters**:
-  - Apply a charge using `d3.forceManyBody()`.  
-  - Set a collision radius using `d3.forceCollide()`:
-    - Choose a reasonable radius range.  
-  - Add UI controls for:
-    - `forceManyBody` strength.  
-    - `forceCollide` radius factor.  
-    - Link strength.  
-
-### 5. Web Page Creation
-- **Visualization Web Page**:  
-  - Create a web page on GitHub to host the visualization.  
-  - Format the page using **Flexbox** or **Bootstrap** to organize the visualization and UI.  
-- **Data Filtering**:  
-  - Exclude records missing the following fields:  
-    - Year  
-    - Affiliation  
-    - Author  
-
----
-
-## Example References
-- Utilize the provided examples as guidance for your implementation.
-
----
+- **Key Insights**:
+  - **Nodes and Affiliation**: Nodes were successfully colored according to their affiliation country, with top 10 countries highlighted in distinct colors.
+  - **Node Size**: The node sizes accurately reflected the degree (number of shared publications) with a smooth transition.
+  - **Interaction**: The hover effect made it easy to focus on authors with the same affiliation, and the tooltip provided clear information about each author when clicked.
+  - **Force Parameters**: Adjusting parameters like **link strength** and **collision radius** allowed for visual exploration of the network’s structure, revealing clusters and outliers.
