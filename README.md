@@ -54,5 +54,3 @@ This repository contains interactive data visualizations built using **D3.js**, 
 - **Interactivity**:  
   - Slider (`jQuery UI`) for range selection.  
   - Brush slider (`d3.brushX`) for focused exploration.  
-
----
