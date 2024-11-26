@@ -1,4 +1,4 @@
-# Homework 3: Force Layout Visualization Using D3.js
+# Major Assignment 3: Force Layout Visualization Using D3.js
 
 ## Overview
 
