@@ -21,4 +21,4 @@ Key features implemented:
   - **Population Distribution**: The map of population in 1980 gives a clear view of demographic distribution across counties.
   - **Population Change**: The second map shows population change over the 2010–2000 period, to visualize areas of growth or decline.
   - **County-Level Color Coding**: The third map colors counties based on the data, with optional coloring by **Gini-index** for the year 2017 for bonus points.
-  - **Interactivity**: Hover interactions allow for detailed exploration of county-specific data,.
+  - **Interactivity**: Hover interactions allow for detailed exploration of county-specific data.
